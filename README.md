@@ -1,85 +1,37 @@
-# app-meta-checker
+# meta-checker
 
 A tool to **fetch, inspect, and preview website metadata** (Open Graph, Twitter Cards, favicon, and standard HTML metadata). Useful for SEO checks and social media preview testing.
 
 ## Features
 
 - Fetch and normalize metadata from any URL.
-- Preview tabs:
-  - **Data** (technical metadata table)
-  - **Facebook**
-  - **Outlook**
-  - **Teams**
-  - **WhatsApp**
+- Preview tabs - data, facebook, outlook, teams, whatsapp
 - Inline Base64 previews for OG and Twitter images.
 - Detect missing metadata and provide fallbacks.
-- Supports Basic Auth for protected pages.
-- Two backend options:
-  - **Node.js server** (local or self-hosted)
-  - **Cloudflare Worker** (lightweight, GitHub Pages-friendly)
+- Supports Basic Auth for protected pages
 
 ## Architecture
 
 ```
-
-frontend/ # React app with preview tabs
-backend/ # Node.js server
+app/ # React app with preview tabs
 worker/ # Cloudflare Worker
-
 ```
 
 - **Frontend:** React, handles user input, fetches metadata, renders preview tabs.
 - **Cloudflare Worker:** \`/api/meta\` POST endpoint; parses HTML using \`HTMLRewriter\`, Base64 image conversion, optional Basic Auth.
-- **Node.js backend:** \`/api/meta\` POST endpoint; parses HTML using \`cheerio\`, Base64 image conversion, optional Basic Auth.
 - **GitHub Pages frontend:** Points to Cloudflare Worker for API requests.
 
 ## Installation
 
-### Frontend
+### App
 
 ```bash
-cd frontend
+cd app
 npm install
 npm run dev
 ```
 
 - By default, the frontend points to the Cloudflare Worker (\`/api/meta\`) for API requests. You'll need to update the fetch request to your own server, as it will be blocked by the Worker's CORS policy.
-
-### Node.js Backend
-
-```bash
-cd backend
-npm install
-npm start
-```
-
-- Sends POST requests to \`/api/meta\` with JSON body:
-
-```json
-{
-  "url": "https://example.com",
-  "username": "optional",
-  "password": "optional"
-}
-```
-
-- Returns metadata JSON:
-
-```json
-{
-  "title": "...",
-  "description": "...",
-  "ogTitle": "...",
-  "ogDescription": "...",
-  "ogImage": "...",
-  "ogImageBase64": "...",
-  "twitterTitle": "...",
-  "twitterDescription": "...",
-  "twitterImage": "...",
-  "twitterImageBase64": "...",
-  "favicon": "..."
-}
-```
 
 ### Cloudflare Worker
 
@@ -105,11 +57,9 @@ npx wrangler publish
 ## Folder Structure
 
 ```
-frontend/
+app/
   └─ src/
-      └─ App.jsx          # Main React frontend
-backend/
-  └─ index.js             # Node.js backend server
+      └─ App.jsx          # React app
 worker/
   ├─ worker.js            # Cloudflare Worker API
   └─ wrangler.toml        # Cloudflare configuration

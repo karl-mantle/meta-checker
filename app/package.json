@@ -1,6 +1,6 @@
 {
-  "homepage": "https://karlmantle.github.io/app-meta-checker",
-  "name": "app-meta-checker-frontend",
+  "homepage": "https://karlmantle.github.io/meta-checker",
+  "name": "meta-checker",
   "private": true,
   "version": "1.0.0",
   "type": "module",

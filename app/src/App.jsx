@@ -32,12 +32,12 @@ export default function App() {
     setError(null);
     try {
       const response = await fetch(
-        "https://app-meta-checker-worker.karlmantle.workers.dev/api/meta",
+        "https://meta-checker-api.karlmantle.workers.dev/api/meta",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ url, username, password }),
-        }
+        },
       );
       const data = await response.json();
       if (response.ok) {
