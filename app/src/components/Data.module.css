@@ -1,0 +1,72 @@
+.root {
+  font-family: monospace;
+  margin-top: 2rem;
+}
+
+.section {
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+.sectionTitle {
+  margin-bottom: 0.75rem;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.label,
+.value {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 6px 8px;
+}
+
+.label {
+  color: var(--muted);
+  width: 30%;
+}
+
+.value {
+  word-break: break-all;
+}
+
+.missing {
+  color: var(--danger);
+}
+
+.imageBlock {
+  margin-top: 0.75rem;
+}
+
+.imageLabel {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.image {
+  border: 1px solid var(--border);
+  max-width: 100%;
+}
+
+/* "Show more" / "Show less" — overrides the global button styles */
+.toggle {
+  background: transparent;
+  border: 1px solid var(--control-border);
+  border-radius: 4px;
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 12px;
+  margin-left: 8px;
+  padding: 1px 6px;
+  width: auto;
+}
+
+.toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--fg);
+  color: var(--fg);
+}

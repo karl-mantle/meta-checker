@@ -1,54 +1,12 @@
 import { useState } from "react";
 import { normaliseMeta } from "../lib/normaliseMeta";
 import { resolveSiteName } from "../lib/resolveSiteName";
-
-const sectionStyle = {
-  border: "1px solid #ddd",
-  padding: "1rem",
-  marginBottom: "1.5rem",
-};
-
-const sectionTitle = {
-  marginBottom: "0.75rem",
-};
-
-const tableStyle = {
-  width: "100%",
-  borderCollapse: "collapse",
-};
-
-const cellLabel = {
-  width: "30%",
-  padding: "6px 8px",
-  borderBottom: "1px solid #eee",
-  color: "#555",
-};
-
-const cellValue = {
-  padding: "6px 8px",
-  borderBottom: "1px solid #eee",
-  wordBreak: "break-all",
-};
-
-const imageBlock = {
-  marginTop: "0.75rem",
-};
-
-const imageLabel = {
-  fontSize: "12px",
-  color: "#666",
-  marginBottom: "4px",
-};
-
-const imageStyle = {
-  maxWidth: "100%",
-  border: "1px solid #ccc",
-};
+import styles from "./Data.module.css";
 
 function TruncatedValue({ text, limit = 160 }) {
   const [expanded, setExpanded] = useState(false);
 
-  if (!text) return <span style={{ color: "#c00" }}>missing</span>;
+  if (!text) return <span className={styles.missing}>missing</span>;
 
   const isLong = text.length > limit;
   const displayText = expanded
@@ -60,13 +18,10 @@ function TruncatedValue({ text, limit = 160 }) {
       {displayText}
       {isLong && (
         <button
+          type="button"
+          className={styles.toggle}
+          aria-expanded={expanded}
           onClick={() => setExpanded(!expanded)}
-          style={{
-            marginLeft: "8px",
-            fontSize: "11px",
-            padding: "2px 4px",
-            cursor: "pointer",
-          }}
         >
           {expanded ? "Show less" : "Show more"}
         </button>
@@ -87,8 +42,8 @@ export default function Data({ meta, url }) {
 
   const Row = ({ label, value }) => (
     <tr>
-      <td style={cellLabel}>{label}</td>
-      <td style={cellValue}>
+      <td className={styles.label}>{label}</td>
+      <td className={styles.value}>
         {" "}
         <TruncatedValue text={value} />{" "}
       </td>
@@ -96,19 +51,19 @@ export default function Data({ meta, url }) {
   );
 
   return (
-    <div style={{ marginTop: "2rem", fontFamily: "monospace" }}>
+    <div className={styles.root}>
       {/* Open Graph */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitle}>Open Graph</h3>
+      <section className={styles.section}>
+        <h3 className={styles.sectionTitle}>Open Graph</h3>
 
         {image && (
-          <div style={imageBlock}>
-            <div style={imageLabel}>Resolved og:image</div>
-            <img src={image} alt="og:image" style={imageStyle} />
+          <div className={styles.imageBlock}>
+            <div className={styles.imageLabel}>Resolved og:image</div>
+            <img src={image} alt="og:image" className={styles.image} />
           </div>
         )}
 
-        <table style={tableStyle}>
+        <table className={styles.table}>
           <tbody>
             <Row label="og:title" value={title} />
             <Row label="og:description" value={description} />
@@ -120,17 +75,17 @@ export default function Data({ meta, url }) {
       </section>
 
       {/* Twitter */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitle}>Twitter Card</h3>
+      <section className={styles.section}>
+        <h3 className={styles.sectionTitle}>Twitter Card</h3>
 
         {twitterImage && (
-          <div style={imageBlock}>
-            <div style={imageLabel}>Resolved twitter:image</div>
-            <img src={twitterImage} alt="twitter:image" style={imageStyle} />
+          <div className={styles.imageBlock}>
+            <div className={styles.imageLabel}>Resolved twitter:image</div>
+            <img src={twitterImage} alt="twitter:image" className={styles.image} />
           </div>
         )}
 
-        <table style={tableStyle}>
+        <table className={styles.table}>
           <tbody>
             <Row label="twitter:title" value={twitterTitle} />
             <Row label="twitter:description" value={twitterDescription} />

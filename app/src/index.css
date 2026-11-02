@@ -1,7 +1,27 @@
 :root {
-  background-color: #000;
+  /* colour tokens: dark is the default, light overrides below */
+  --bg: #000;
+  --fg: #f5f5f5;
+  --muted: #a3a3a3;
+  --border: #525252;
+  --control-border: #8a8a8a;
+  --border-subtle: #2e2e2e;
+  --surface: #171717;
+  --surface-hover: #262626;
+  --link: #fff;
+  --link-hover: #f472b6;
+  --danger: #f87171;
+  --focus: #f472b6;
+  --button-bg: #242424;
+  --button-fg: #fff;
+  --button-border: #525252;
+  --button-hover-bg: #1a1a1a;
+  --button-hover-fg: #fff;
+  --button-hover-border: #fff;
+
+  background-color: var(--bg);
   color-scheme: light dark;
-  color: #f5f5f5;
+  color: var(--fg);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji";
@@ -18,16 +38,16 @@
 }
 
 a {
-  color: #fff;
+  color: var(--link);
   font-weight: 500;
   text-decoration: inherit;
 }
 a:hover {
-  color: #f472b6;
+  color: var(--link-hover);
   text-decoration: underline;
 }
 a:has(svg):hover {
-  color: #fff;
+  color: var(--link);
   font-weight: 600;
 }
 
@@ -44,9 +64,9 @@ body {
 }
 
 button {
-  background-color: #242424;
-  border: 2px solid transparent;
-  color: #fff;
+  background-color: var(--button-bg);
+  border: 2px solid var(--button-border);
+  color: var(--button-fg);
   cursor: pointer;
   font-size: 1em;
   font-weight: 500;
@@ -56,14 +76,19 @@ button {
   width: 100%;
 }
 button:hover {
-  background-color: #1a1a1a;
-  border-color: #fff;
+  background-color: var(--button-hover-bg);
+  border-color: var(--button-hover-border);
+  color: var(--button-hover-fg);
 }
-button:focus,
 button:focus-visible,
-input:focus,
-input:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+input:focus-visible,
+.react-tabs__tab:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.error {
+  color: var(--danger);
 }
 
 footer {
@@ -117,18 +142,24 @@ svg {
 
 @media (prefers-color-scheme: light) {
   :root {
-    background-color: #f5f5f5;
-    color: #242424;
-  }
-  a,
-  a:hover,
-  a:has(svg):hover {
-    color: #000;
-  }
-  button:hover {
-    background-color: transparent;
-    border-color: #242424;
-    color: #242424;
+    --bg: #f5f5f5;
+    --fg: #242424;
+    --muted: #525252;
+    --border: #a3a3a3;
+    --control-border: #6b6b6b;
+    --border-subtle: #e5e5e5;
+    --surface: #fff;
+    --surface-hover: #ebebeb;
+    --link: #000;
+    --link-hover: #000;
+    --danger: #b91c1c;
+    --focus: #db2777;
+    --button-bg: #242424;
+    --button-fg: #fff;
+    --button-border: #242424;
+    --button-hover-bg: transparent;
+    --button-hover-fg: #242424;
+    --button-hover-border: #242424;
   }
 }
 
@@ -164,7 +195,7 @@ svg {
 }
 
 .react-tabs__tab-list {
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid var(--border);
   margin: 0 0 10px;
   padding: 0;
 }
@@ -181,9 +212,9 @@ svg {
 }
 
 .react-tabs__tab--selected {
-  background: transparent;
-  border-color: #aaa;
-  color: black;
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--fg);
   border-radius: 5px 5px 0 0;
 }
 
