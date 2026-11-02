@@ -1,36 +1,21 @@
 import { normaliseMeta } from "../lib/normaliseMeta";
 import { resolveSiteName } from "../lib/resolveSiteName";
+import PreviewFrame from "./PreviewFrame.jsx";
+import styles from "./Outlook.module.css";
 
 export default function Outlook({ meta, url }) {
   const { title, description, image } = normaliseMeta(meta);
 
   return (
-    <div
-      style={{
-        width: 480,
-        border: "1px solid #c8c8c8",
-        padding: 12,
-        fontFamily: "Segoe UI, Arial",
-      }}
-    >
-      <div style={{ display: "flex", gap: 12 }}>
-        {image && (
-          <img
-            src={image}
-            alt="Outlook preview"
-            style={{ width: 100, height: 100, objectFit: "cover" }}
-          />
-        )}
-        <div>
-          <div style={{ fontWeight: 600 }}>{title}</div>
-          <div style={{ fontSize: 13, color: "#333", margin: "6px 0" }}>
-            {description}
-          </div>
-          <div style={{ fontSize: 12, color: "#0078d4" }}>
-            {resolveSiteName(url)}
-          </div>
+    <PreviewFrame label="Outlook email link preview" maxWidth={480}>
+      <div className={styles.root}>
+        {image && <img src={image} alt="Outlook preview" className={styles.image} />}
+        <div className={styles.body}>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.description}>{description}</div>
+          <div className={styles.domain}>{resolveSiteName(url)}</div>
         </div>
       </div>
-    </div>
+    </PreviewFrame>
   );
 }

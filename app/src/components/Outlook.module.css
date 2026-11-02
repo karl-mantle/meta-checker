@@ -1,0 +1,52 @@
+/* Outlook (Fluent 2) colours: light by default, dark under prefers-color-scheme */
+.root {
+  --ol-surface: #fff;
+  --ol-border: #d1d1d1;
+  --ol-text: #242424;
+  --ol-secondary: #424242;
+  --ol-link: #0f6cbd;
+
+  background: var(--ol-surface);
+  border: 1px solid var(--ol-border);
+  color: var(--ol-text);
+  display: flex;
+  font-family: "Segoe UI", Arial, sans-serif;
+  gap: 12px;
+  padding: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .root {
+    --ol-surface: #292929;
+    --ol-border: #525252;
+    --ol-text: #fff;
+    --ol-secondary: #d6d6d6;
+    --ol-link: #479ef5;
+  }
+}
+
+.image {
+  flex: none;
+  height: 100px;
+  object-fit: cover;
+  width: 100px;
+}
+
+.body {
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.description {
+  color: var(--ol-secondary);
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.domain {
+  color: var(--ol-link);
+  font-size: 12px;
+}
