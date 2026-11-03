@@ -1,50 +1,57 @@
-/* Facebook colours: light by default, dark under prefers-color-scheme */
+/*
+ * Facebook feed link preview. Sizes and light colours match the card on
+ * metatags.io; dark colours follow Facebook's dark theme.
+ */
 .root {
-  --fb-surface: #fff;
   --fb-strip: #f0f2f5;
-  --fb-border: #dadde1;
-  --fb-text: #050505;
-  --fb-secondary: #65676b;
+  --fb-title: #080809;
+  --fb-domain: #65686c;
 
-  background: var(--fb-surface);
-  border: 1px solid var(--fb-border);
-  color: var(--fb-text);
-  font-family: "Segoe UI Historic", "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   .root {
-    --fb-surface: #242526;
     --fb-strip: #3a3b3c;
-    --fb-border: #3e4042;
-    --fb-text: #e4e6eb;
-    --fb-secondary: #b0b3b8;
+    --fb-title: #e4e6eb;
+    --fb-domain: #b0b3b8;
   }
 }
 
+/* 1.905:1 crop, same as Facebook's 52.5% padding-top box */
 .image {
-  aspect-ratio: 1.91 / 1;
+  aspect-ratio: 40 / 21;
   object-fit: cover;
   width: 100%;
 }
 
 .body {
   background: var(--fb-strip);
-  padding: 12px;
+  overflow-wrap: break-word;
+  padding: 10px 16px 6px;
+}
+
+.domain,
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .domain {
-  color: var(--fb-secondary);
-  font-size: 12px;
+  color: var(--fb-domain);
+  font-size: 13px;
+  line-height: 12px;
+  margin-bottom: 4px;
   text-transform: uppercase;
 }
 
 .title {
-  font-size: 16px;
+  color: var(--fb-title);
+  font-size: 17px;
   font-weight: 600;
-}
-
-.description {
-  color: var(--fb-secondary);
-  font-size: 14px;
+  line-height: 21px;
 }
