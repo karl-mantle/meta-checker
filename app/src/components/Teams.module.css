@@ -1,54 +1,90 @@
-/* Teams colours: light by default, dark under prefers-color-scheme */
+/*
+ * Microsoft Teams chat link preview. Sizes and light colours measured
+ * from a Teams screenshot; dark colours are estimated from Teams' dark
+ * theme.
+ */
 .root {
-  --teams-surface: #fff;
-  --teams-border: #e0e0e0;
+  --teams-box: #f5f5f5;
   --teams-text: #242424;
   --teams-secondary: #616161;
-  --teams-accent: #5b5fc7;
 
-  background: var(--teams-surface);
-  border: 1px solid var(--teams-border);
-  color: var(--teams-text);
   display: flex;
-  font-family: "Segoe UI", Arial, sans-serif;
-  gap: 12px;
-  padding: 12px;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    Helvetica, Arial, sans-serif;
+  min-height: 108px;
 }
 
 @media (prefers-color-scheme: dark) {
   .root {
-    --teams-surface: #292929;
-    --teams-border: #3d3d3d;
+    --teams-box: #333;
     --teams-text: #fff;
     --teams-secondary: #adadad;
-    --teams-accent: #7f85f5;
   }
 }
 
+/* Thumbnail: whole image fitted inside, centred */
 .image {
-  border-radius: 4px;
+  align-self: stretch;
   flex: none;
-  height: 80px;
-  object-fit: cover;
-  width: 80px;
+  height: 108px;
+  object-fit: contain;
+  /* shrinks on narrow screens so the text keeps room */
+  width: min(143px, 40%);
 }
 
-.body {
+.box {
+  background: var(--teams-box);
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   min-width: 0;
+  padding: 10px 40px 6px 16px;
+  position: relative;
+}
+
+/* Joined to the thumbnail, so only the right corners are rounded */
+.image + .box {
+  border-radius: 0 4px 4px 0;
 }
 
 .title {
-  font-size: 14px;
+  color: var(--teams-text);
+  font-size: 16px;
   font-weight: 600;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .description {
-  color: var(--teams-secondary);
-  font-size: 13px;
-  margin: 4px 0;
+  -webkit-box-orient: vertical;
+  color: var(--teams-text);
+  display: -webkit-box;
+  font-size: 14px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  line-height: 17px;
+  overflow: hidden;
 }
 
 .domain {
-  color: var(--teams-accent);
-  font-size: 12px;
+  color: var(--teams-secondary);
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: auto;
+  overflow: hidden;
+  padding-top: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.close {
+  color: var(--teams-secondary);
+  height: 14px;
+  position: absolute;
+  right: 11px;
+  top: 9px;
+  width: 14px;
 }
