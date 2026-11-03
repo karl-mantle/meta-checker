@@ -1,0 +1,50 @@
+/* Facebook colours: light by default, dark under prefers-color-scheme */
+.root {
+  --fb-surface: #fff;
+  --fb-strip: #f0f2f5;
+  --fb-border: #dadde1;
+  --fb-text: #050505;
+  --fb-secondary: #65676b;
+
+  background: var(--fb-surface);
+  border: 1px solid var(--fb-border);
+  color: var(--fb-text);
+  font-family: "Segoe UI Historic", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  .root {
+    --fb-surface: #242526;
+    --fb-strip: #3a3b3c;
+    --fb-border: #3e4042;
+    --fb-text: #e4e6eb;
+    --fb-secondary: #b0b3b8;
+  }
+}
+
+.image {
+  aspect-ratio: 1.91 / 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+.body {
+  background: var(--fb-strip);
+  padding: 12px;
+}
+
+.domain {
+  color: var(--fb-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--fb-secondary);
+  font-size: 14px;
+}

@@ -1,0 +1,54 @@
+/* Teams colours: light by default, dark under prefers-color-scheme */
+.root {
+  --teams-surface: #fff;
+  --teams-border: #e0e0e0;
+  --teams-text: #242424;
+  --teams-secondary: #616161;
+  --teams-accent: #5b5fc7;
+
+  background: var(--teams-surface);
+  border: 1px solid var(--teams-border);
+  color: var(--teams-text);
+  display: flex;
+  font-family: "Segoe UI", Arial, sans-serif;
+  gap: 12px;
+  padding: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .root {
+    --teams-surface: #292929;
+    --teams-border: #3d3d3d;
+    --teams-text: #fff;
+    --teams-secondary: #adadad;
+    --teams-accent: #7f85f5;
+  }
+}
+
+.image {
+  border-radius: 4px;
+  flex: none;
+  height: 80px;
+  object-fit: cover;
+  width: 80px;
+}
+
+.body {
+  min-width: 0;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--teams-secondary);
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.domain {
+  color: var(--teams-accent);
+  font-size: 12px;
+}

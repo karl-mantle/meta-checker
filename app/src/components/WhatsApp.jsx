@@ -1,32 +1,21 @@
 import { normaliseMeta } from "../lib/normaliseMeta";
 import { resolveSiteName } from "../lib/resolveSiteName";
+import PreviewFrame from "./PreviewFrame.jsx";
+import styles from "./WhatsApp.module.css";
 
 export default function WhatsApp({ meta, url }) {
   const { title, description, image } = normaliseMeta(meta);
 
   return (
-    <div
-      style={{
-        width: 360,
-        border: "1px solid #e0e0e0",
-        borderRadius: 8,
-        overflow: "hidden",
-      }}
-    >
-      {image && (
-        <img
-          src={image}
-          alt="WhatsApp OG"
-          style={{ width: "100%", height: 180, objectFit: "cover" }}
-        />
-      )}
-      <div style={{ padding: 10 }}>
-        <div style={{ fontWeight: 600 }}>{title}</div>
-        <div style={{ fontSize: 13, color: "#555" }}>{description}</div>
-        <div style={{ fontSize: 12, color: "#999" }}>
-          {resolveSiteName(url)}
+    <PreviewFrame label="WhatsApp chat link preview" maxWidth={360}>
+      <div className={styles.root}>
+        {image && <img src={image} alt="WhatsApp OG" className={styles.image} />}
+        <div className={styles.body}>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.description}>{description}</div>
+          <div className={styles.domain}>{resolveSiteName(url)}</div>
         </div>
       </div>
-    </div>
+    </PreviewFrame>
   );
 }
