@@ -1,90 +1,107 @@
 /*
- * Microsoft Teams chat link preview. Sizes and light colours measured
- * from a Teams screenshot; dark colours are estimated from Teams' dark
- * theme.
+ * New Microsoft Teams chat link preview: a card inside the message
+ * bubble. Sizes and light colours measured from a Teams screenshot (taken
+ * at 80% zoom) and matched to Fluent 2 tokens; dark colours are estimated
+ * from Fluent's dark theme.
  */
 .root {
-  --teams-box: #f5f5f5;
+  --teams-bubble: #f5f5f5;
+  --teams-card: #fafafa;
+  --teams-thumb: #f0f0f0;
   --teams-text: #242424;
   --teams-secondary: #616161;
+  --teams-link: #4f52b2;
+  --teams-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
 
-  display: flex;
+  background: var(--teams-bubble);
+  border-radius: 4px;
+  box-sizing: border-box;
   font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
     Helvetica, Arial, sans-serif;
-  min-height: 108px;
+  max-width: 100%;
+  padding: 8px 16px 12px;
+  /* grows with the link text, never narrower than the card */
+  width: fit-content;
 }
 
 @media (prefers-color-scheme: dark) {
   .root {
-    --teams-box: #333;
+    --teams-bubble: #292929;
+    --teams-card: #333;
+    --teams-thumb: #3d3d3d;
     --teams-text: #fff;
     --teams-secondary: #adadad;
+    --teams-link: #7f85f5;
+    --teams-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 1px 2px rgba(0, 0, 0, 0.28);
   }
 }
 
-/* Thumbnail: whole image fitted inside, centred */
-.image {
-  align-self: stretch;
-  flex: none;
-  height: 108px;
-  object-fit: contain;
-  /* shrinks on narrow screens so the text keeps room */
-  width: min(143px, 40%);
+/* The pasted URL, shown above the card */
+.link {
+  color: var(--teams-link);
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
 }
 
-.box {
-  background: var(--teams-box);
-  border-radius: 4px;
+.card {
+  background: var(--teams-card);
+  border-radius: 6px;
+  box-shadow: var(--teams-shadow);
+  display: flex;
+  height: 96px;
+  margin-top: 4px;
+  max-width: 100%;
+  overflow: hidden;
+  width: 372px;
+}
+
+.image {
+  background: var(--teams-thumb);
+  flex: none;
+  height: 96px;
+  object-fit: cover;
+  /* shrinks on narrow screens so the text keeps room */
+  width: min(120px, 35%);
+}
+
+.body {
   display: flex;
   flex: 1;
   flex-direction: column;
   min-width: 0;
-  padding: 10px 40px 6px 16px;
-  position: relative;
+  padding: 8px 2px 8px 12px;
 }
 
-/* Joined to the thumbnail, so only the right corners are rounded */
-.image + .box {
-  border-radius: 0 4px 4px 0;
+.title,
+.domain {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .title {
   color: var(--teams-text);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .description {
   -webkit-box-orient: vertical;
   color: var(--teams-text);
   display: -webkit-box;
-  font-size: 14px;
+  font-size: 12px;
   -webkit-line-clamp: 2;
   line-clamp: 2;
-  line-height: 17px;
+  line-height: 16px;
   overflow: hidden;
 }
 
 .domain {
   color: var(--teams-secondary);
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 16px;
   margin-top: auto;
-  overflow: hidden;
-  padding-top: 8px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.close {
-  color: var(--teams-secondary);
-  height: 14px;
-  position: absolute;
-  right: 11px;
-  top: 9px;
-  width: 14px;
 }
