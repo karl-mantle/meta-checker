@@ -11,3 +11,8 @@ export const resolveSiteName = (url) => {
     return "";
   }
 };
+
+// Domain as chat and social apps show it: no "www." prefix, with a
+// placeholder when the URL can't be parsed.
+export const resolveDisplayDomain = (url) =>
+  resolveSiteName(url).replace(/^www\./i, "") || "example.com";

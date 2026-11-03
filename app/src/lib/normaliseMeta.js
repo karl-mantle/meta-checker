@@ -15,4 +15,5 @@ export const normaliseMeta = (meta) => ({
     meta.twitterDescription || meta.description || ""
   ),
   twitterImage: meta.twitterImageBase64 || meta.twitterImage || "",
+  favicon: meta.favicon || "",
 });
