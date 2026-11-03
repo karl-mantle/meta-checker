@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Data from "./components/Data.jsx";
 import Facebook from "./components/Facebook.jsx";
-import Outlook from "./components/Outlook.jsx";
+import LinkedIn from "./components/LinkedIn.jsx";
 import Teams from "./components/Teams.jsx";
 import WhatsApp from "./components/WhatsApp.jsx";
 
@@ -100,7 +100,7 @@ export default function App() {
             <TabList>
               <Tab>Data</Tab>
               <Tab>Facebook</Tab>
-              <Tab>Outlook</Tab>
+              <Tab>LinkedIn</Tab>
               <Tab>Teams</Tab>
               <Tab>WhatsApp</Tab>
             </TabList>
@@ -112,7 +112,7 @@ export default function App() {
               <Facebook meta={meta} url={url} />
             </TabPanel>
             <TabPanel>
-              <Outlook meta={meta} url={url} />
+              <LinkedIn meta={meta} url={url} />
             </TabPanel>
             <TabPanel>
               <Teams meta={meta} url={url} />

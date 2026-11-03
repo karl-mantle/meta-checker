@@ -5,7 +5,7 @@ A tool to **fetch, inspect, and preview website metadata** (Open Graph, Twitter 
 ## Features
 
 - Fetch and normalize metadata from any URL.
-- Preview tabs - data, facebook, outlook, teams, whatsapp
+- Preview tabs - data, facebook, linkedin, teams, whatsapp
 - Inline Base64 previews for OG and Twitter images.
 - Detect missing metadata and provide fallbacks.
 - Supports Basic Auth for protected pages
@@ -52,7 +52,7 @@ npx wrangler publish
 3. Click **Fetch Meta Tags**.
 4. View results in tabs:
    - **Data:** Technical metadata table with normalized values.
-   - **Facebook / Outlook / Teams / WhatsApp:** Previews using fetched metadata.
+   - **Facebook / LinkedIn / Teams / WhatsApp:** Previews using fetched metadata.
 
 ## Folder Structure
 
