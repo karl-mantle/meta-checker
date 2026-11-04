@@ -1,29 +1,53 @@
 /*
- * WhatsApp link preview inside an outgoing message. Sizes and light
- * colours match the card on metatags.io; dark colours follow WhatsApp's
- * dark theme (outgoing bubble green).
+ * WhatsApp link preview in an outgoing message bubble. Sizes and both
+ * colour sets measured from WhatsApp Web screenshots in light and dark
+ * mode.
  */
 .root {
-  --wa-bg: #daf0cb;
-  --wa-border: #e9edef;
-  --wa-title: #111b21;
-  --wa-secondary: #727f6e;
+  --wa-bubble: #d9fdd3;
+  --wa-inset: #d6f3cf;
+  --wa-title: #0a0a0a;
+  --wa-secondary: #566153;
+  --wa-link: #1b8755;
+  --wa-meta: #667781;
+  --wa-ticks: #53bdeb;
 
-  background: var(--wa-bg);
-  border: 1px solid var(--wa-border);
-  border-radius: 7.5px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif;
-  overflow: hidden;
+  background: var(--wa-bubble);
+  border-radius: 7.5px 0 7.5px 7.5px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande",
+    Arial, Ubuntu, Cantarell, "Fira Sans", sans-serif;
+  padding: 3px;
+  position: relative;
+  /* leaves room for the tail */
+  width: calc(100% - 8px);
 }
 
 @media (prefers-color-scheme: dark) {
   .root {
-    --wa-bg: #025144;
-    --wa-border: #13695a;
-    --wa-title: #e9edef;
-    --wa-secondary: #a4bebc;
+    --wa-bubble: #144d37;
+    --wa-inset: #103e2c;
+    --wa-title: #fafafa;
+    --wa-secondary: #9fb2ab;
+    --wa-link: #21c063;
+    --wa-meta: rgba(255, 255, 255, 0.6);
   }
+}
+
+/* Bubble tail, top right */
+.root::after {
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--wa-bubble);
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 0;
+}
+
+.preview {
+  background: var(--wa-inset);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .image {
@@ -31,54 +55,75 @@
 }
 
 .body {
-  padding: 10px 12px;
+  padding: 6px 10px;
+}
+
+.title,
+.description,
+.domain {
+  font-size: 13px;
+  line-height: 19px;
+  overflow-wrap: break-word;
 }
 
 .title,
 .description {
   -webkit-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
-  line-clamp: 5;
-  margin-bottom: 6px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
-  overflow-wrap: break-word;
 }
 
 .title {
   color: var(--wa-title);
-  font-size: 13px;
   font-weight: 600;
-  line-height: 19px;
+  margin-bottom: 2px;
 }
 
 .description {
   color: var(--wa-secondary);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 17px;
-}
-
-.footer {
-  align-items: center;
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
+  margin-bottom: 3px;
 }
 
 .domain {
   color: var(--wa-secondary);
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 16px;
-  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.favicon {
+/* The pasted URL, with the time and ticks bottom right */
+.message {
+  align-items: flex-end;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 6px 4px 1px 6px;
+}
+
+.link {
+  color: var(--wa-link);
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 5px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+}
+
+.meta {
+  align-items: center;
+  color: var(--wa-meta);
+  display: flex;
   flex: none;
-  height: 16px;
+  font-size: 11px;
+  gap: 3px;
+  line-height: 15px;
+}
+
+.ticks {
+  color: var(--wa-ticks);
+  height: 11px;
   width: 16px;
 }
