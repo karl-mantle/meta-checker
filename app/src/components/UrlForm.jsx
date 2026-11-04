@@ -41,7 +41,7 @@ export default function UrlForm({
 
   return (
     <form
-      className={styles.urlForm}
+      className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
         fetchMetadata();

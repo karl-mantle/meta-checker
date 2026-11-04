@@ -8,7 +8,7 @@ import styles from "./PreviewTabs.module.css";
 
 export default function PreviewTabs({ meta, url }) {
   return (
-    <section className={styles.previewTabsWrapper}>
+    <section className={styles.tabs}>
       <h2>Preview</h2>
       <Tabs>
         <TabList>
