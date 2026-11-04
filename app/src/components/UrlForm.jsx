@@ -1,12 +1,5 @@
 import styles from "./UrlForm.module.css";
 
-/**
- * Shared wrapper for the platform preview tabs.
- *
- * - `label` names what the preview imitates, e.g. "Facebook feed post".
- * - `maxWidth` is the width the real app renders the card at (px). The
- *   preview shrinks below that on narrow screens instead of overflowing.
- */
 export default function UrlForm({
   url,
   username,
