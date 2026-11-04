@@ -1,6 +1,8 @@
 /*
- * LinkedIn feed link preview. Sizes and light colours match the card on
- * metatags.io; dark colours are estimated from LinkedIn's dark theme.
+ * LinkedIn feed link preview. Sizes and light colours measured from a
+ * LinkedIn screenshot (based on the metatags.io card, with a narrower
+ * thumbnail and tighter title lines); dark colours are estimated from
+ * LinkedIn's dark theme.
  */
 .root {
   --li-card: #fff;
@@ -35,7 +37,7 @@
   flex: none;
   height: 72px;
   object-fit: cover;
-  width: 128px;
+  width: 108px;
 }
 
 .body {
@@ -54,7 +56,7 @@
   font-weight: 600;
   -webkit-line-clamp: 2;
   line-clamp: 2;
-  line-height: 20px;
+  line-height: 18px;
   margin-bottom: 4px;
   overflow: hidden;
   overflow-wrap: break-word;
