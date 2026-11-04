@@ -1,9 +1,9 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import Data from "./components/views/Data.jsx";
-import Facebook from "./components/views/Facebook.jsx";
-import LinkedIn from "./components/views/LinkedIn.jsx";
-import Teams from "./components/views/Teams.jsx";
-import WhatsApp from "./components/views/WhatsApp.jsx";
+import Data from "./views/Data.jsx";
+import Facebook from "./views/Facebook.jsx";
+import LinkedIn from "./views/LinkedIn.jsx";
+import Teams from "./views/Teams.jsx";
+import WhatsApp from "./views/WhatsApp.jsx";
 import styles from "./PreviewTabs.module.css";
 
 export default function PreviewTabs({ meta, url }) {

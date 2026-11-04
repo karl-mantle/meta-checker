@@ -1,6 +1,6 @@
-import { normaliseMeta } from "../lib/normaliseMeta";
-import { resolveSiteName } from "../lib/resolveSiteName";
-import PreviewFrame from "./PreviewFrame.jsx";
+import { normaliseMeta } from "../../lib/normaliseMeta.js";
+import { resolveSiteName } from "../../lib/resolveSiteName.js";
+import PreviewFrame from "../PreviewFrame.jsx";
 import styles from "./WhatsApp.module.css";
 
 const timeNow = () =>

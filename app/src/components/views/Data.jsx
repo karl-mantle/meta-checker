@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { normaliseMeta } from "../lib/normaliseMeta";
-import { resolveSiteName } from "../lib/resolveSiteName";
+import { normaliseMeta } from "../../lib/normaliseMeta.js";
+import { resolveSiteName } from "../../lib/resolveSiteName.js";
 import styles from "./Data.module.css";
 
 function TruncatedValue({ text, limit = 160 }) {
@@ -81,7 +81,11 @@ export default function Data({ meta, url }) {
         {twitterImage && (
           <div className={styles.imageBlock}>
             <div className={styles.imageLabel}>Resolved twitter:image</div>
-            <img src={twitterImage} alt="twitter:image" className={styles.image} />
+            <img
+              src={twitterImage}
+              alt="twitter:image"
+              className={styles.image}
+            />
           </div>
         )}
 
