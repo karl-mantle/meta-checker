@@ -1,8 +1,7 @@
 /*
- * LinkedIn feed link preview. Sizes and light colours measured from a
- * LinkedIn screenshot (based on the metatags.io card, with a narrower
- * thumbnail and tighter title lines); dark colours are estimated from
- * LinkedIn's dark theme.
+ * LinkedIn feed link preview. Sizes and both colour sets measured from
+ * LinkedIn screenshots in light and dark mode (based on the metatags.io
+ * card, with a narrower thumbnail and tighter title lines).
  */
 .root {
   --li-card: #fff;
@@ -26,7 +25,7 @@
 @media (prefers-color-scheme: dark) {
   .root {
     --li-card: #1b1f23;
-    --li-border: rgba(255, 255, 255, 0.15);
+    --li-border: rgba(255, 255, 255, 0.12);
     --li-title: rgba(255, 255, 255, 0.9);
     --li-domain: rgba(255, 255, 255, 0.6);
   }
