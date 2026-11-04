@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import Data from "./components/Data.jsx";
-import Facebook from "./components/Facebook.jsx";
-import LinkedIn from "./components/LinkedIn.jsx";
-import Teams from "./components/Teams.jsx";
-import WhatsApp from "./components/WhatsApp.jsx";
+import UrlForm from "./components/UrlForm.jsx";
+import Data from "./components/views/Data.jsx";
+import Facebook from "./components/views/Facebook.jsx";
+import LinkedIn from "./components/views/LinkedIn.jsx";
+import Teams from "./components/views/Teams.jsx";
+import WhatsApp from "./components/views/WhatsApp.jsx";
 
 const defaultPreview = {
   title: "",
@@ -19,6 +20,7 @@ const defaultPreview = {
 };
 
 export default function App() {
+  /* states */
   const [url, setUrl] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -27,65 +29,21 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(false);
 
-  const fetchMetadata = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(
-        "https://meta-checker-api.karlmantle.workers.dev/api/meta",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url, username, password }),
-        },
-      );
-      const data = await response.json();
-      if (response.ok) {
-        setMeta(data);
-      } else {
-        setError(data.error || "Failed to fetch meta data");
-      }
-    } catch (err) {
-      setError("Error: " + err.message);
-    } finally {
-      setLoading(false);
-      setPreview(true);
-    }
-  };
-
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          fetchMetadata();
-        }}
-      >
-        <input
-          id="url"
-          type="text"
-          placeholder="https://www.something.com"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <input
-          id="username"
-          type="text"
-          placeholder="Basic Auth Username (optional)"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          id="password"
-          type="password"
-          placeholder="Basic Auth Password (optional)"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Fetch Meta Tags"}
-        </button>
-      </form>
+      <UrlForm
+        url={url}
+        username={username}
+        password={password}
+        loading={loading}
+        setUrl={setUrl}
+        setUsername={setUsername}
+        setPassword={setPassword}
+        setMeta={setMeta}
+        setError={setError}
+        setLoading={setLoading}
+        setPreview={setPreview}
+      />
 
       {error && (
         <p className="error" role="alert">

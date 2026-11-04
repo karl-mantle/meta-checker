@@ -1,6 +1,6 @@
-import { normaliseMeta } from "../lib/normaliseMeta";
-import { resolveDisplayDomain } from "../lib/resolveSiteName";
-import PreviewFrame from "./PreviewFrame.jsx";
+import { normaliseMeta } from "../../lib/normaliseMeta.js";
+import { resolveDisplayDomain } from "../../lib/resolveSiteName.js";
+import PreviewFrame from "../PreviewFrame.jsx";
 import styles from "./Teams.module.css";
 
 export default function Teams({ meta, url }) {

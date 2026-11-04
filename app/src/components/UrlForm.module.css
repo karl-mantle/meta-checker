@@ -1,0 +1,16 @@
+.url-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .url-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .url-form > :first-child,
+  .url-form > button {
+    grid-column: span 2;
+  }
+}
