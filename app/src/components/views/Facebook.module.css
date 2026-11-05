@@ -1,7 +1,3 @@
-/*
- * Facebook feed link preview. Sizes and light colours match the card on
- * metatags.io; dark colours follow Facebook's dark theme.
- */
 .root {
   --fb-strip: #f0f2f5;
   --fb-title: #080809;
@@ -9,8 +5,14 @@
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

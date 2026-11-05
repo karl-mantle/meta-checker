@@ -1,11 +1,5 @@
-.root {
-  font-family: monospace;
-  margin-top: 2rem;
-}
-
 .section {
-  border: 1px solid var(--border);
-  margin-bottom: 1.5rem;
+  font-family: monospace;
   padding: 1rem;
 }
 
@@ -52,7 +46,6 @@
   max-width: 100%;
 }
 
-/* "Show more" / "Show less" — overrides the global button styles */
 .toggle {
   background: transparent;
   border: 1px solid var(--control-border);

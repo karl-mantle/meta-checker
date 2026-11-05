@@ -7,33 +7,30 @@ import WhatsApp from "./views/WhatsApp.jsx";
 
 export default function PreviewTabs({ meta, url }) {
   return (
-    <section className="preview-tabs">
-      <h2>Preview</h2>
-      <Tabs>
-        <TabList>
-          <Tab>Data</Tab>
-          <Tab>Facebook</Tab>
-          <Tab>LinkedIn</Tab>
-          <Tab>Teams</Tab>
-          <Tab>WhatsApp</Tab>
-        </TabList>
+    <Tabs>
+      <TabList>
+        <Tab>Data</Tab>
+        <Tab>Facebook</Tab>
+        <Tab>LinkedIn</Tab>
+        <Tab>Teams</Tab>
+        <Tab>WhatsApp</Tab>
+      </TabList>
 
-        <TabPanel>
-          <Data meta={meta} url={url} />
-        </TabPanel>
-        <TabPanel>
-          <Facebook meta={meta} url={url} />
-        </TabPanel>
-        <TabPanel>
-          <LinkedIn meta={meta} url={url} />
-        </TabPanel>
-        <TabPanel>
-          <Teams meta={meta} url={url} />
-        </TabPanel>
-        <TabPanel>
-          <WhatsApp meta={meta} url={url} />
-        </TabPanel>
-      </Tabs>
-    </section>
+      <TabPanel>
+        <Data meta={meta} url={url} />
+      </TabPanel>
+      <TabPanel>
+        <Facebook meta={meta} url={url} />
+      </TabPanel>
+      <TabPanel>
+        <LinkedIn meta={meta} url={url} />
+      </TabPanel>
+      <TabPanel>
+        <Teams meta={meta} url={url} />
+      </TabPanel>
+      <TabPanel>
+        <WhatsApp meta={meta} url={url} />
+      </TabPanel>
+    </Tabs>
   );
 }

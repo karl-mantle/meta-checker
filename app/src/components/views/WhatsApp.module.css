@@ -1,8 +1,3 @@
-/*
- * WhatsApp link preview in an outgoing message bubble. Sizes and both
- * colour sets measured from WhatsApp Web screenshots in light and dark
- * mode.
- */
 .root {
   --wa-bubble: #d9fdd3;
   --wa-inset: #d6f3cf;
@@ -15,8 +10,9 @@
   background: var(--wa-bubble);
   border-radius: 7.5px 0 7.5px 7.5px;
   box-sizing: border-box;
-  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande",
-    Arial, Ubuntu, Cantarell, "Fira Sans", sans-serif;
+  font-family:
+    "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, Ubuntu,
+    Cantarell, "Fira Sans", sans-serif;
   padding: 3px;
   position: relative;
   /* leaves room for the tail */
