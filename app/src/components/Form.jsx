@@ -1,6 +1,4 @@
-import styles from "./UrlForm.module.css";
-
-export default function UrlForm({
+export default function Form({
   url,
   username,
   password,
@@ -41,7 +39,6 @@ export default function UrlForm({
 
   return (
     <form
-      className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
         fetchMetadata();

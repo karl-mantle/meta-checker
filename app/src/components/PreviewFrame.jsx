@@ -1,11 +1,9 @@
-import styles from "./PreviewFrame.module.css";
-
 export default function PreviewFrame({ label, maxWidth, children }) {
   return (
-    <figure className={styles.frame}>
-      <figcaption className={styles.caption}>{label}</figcaption>
+    <figure className="preview-frame">
+      <figcaption className="preview-caption">{label}</figcaption>
       <div
-        className={styles.stage}
+        className="preview-content"
         style={
           maxWidth ? { "--preview-max-width": `${maxWidth}px` } : undefined
         }

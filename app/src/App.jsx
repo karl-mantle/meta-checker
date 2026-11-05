@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UrlForm from "./components/UrlForm.jsx";
+import Form from "./components/Form.jsx";
 import PreviewTabs from "./components/PreviewTabs.jsx";
 
 const defaultPreview = {
@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <UrlForm
+      <Form
         url={url}
         username={username}
         password={password}

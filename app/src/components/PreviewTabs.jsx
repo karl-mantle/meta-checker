@@ -4,11 +4,10 @@ import Facebook from "./views/Facebook.jsx";
 import LinkedIn from "./views/LinkedIn.jsx";
 import Teams from "./views/Teams.jsx";
 import WhatsApp from "./views/WhatsApp.jsx";
-import styles from "./PreviewTabs.module.css";
 
 export default function PreviewTabs({ meta, url }) {
   return (
-    <section className={styles.tabs}>
+    <section className="preview-tabs">
       <h2>Preview</h2>
       <Tabs>
         <TabList>
