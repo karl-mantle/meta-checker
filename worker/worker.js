@@ -60,6 +60,8 @@ async function handleMetaRequest(request) {
       ogDescription: null,
       ogImage: null,
       ogImageBase64: null,
+      ogSiteName: null,
+      twitterCard: null,
       twitterTitle: null,
       twitterDescription: null,
       twitterImage: null,
@@ -68,9 +70,11 @@ async function handleMetaRequest(request) {
     };
 
     const rewriter = new HTMLRewriter()
-      .on("title", {
+      // Only the document title (not SVG <title>s). Text can arrive in
+      // several chunks, so append rather than overwrite.
+      .on("head > title", {
         text(text) {
-          metadata.title = text.text;
+          metadata.title = (metadata.title || "") + text.text;
         },
       })
       .on("meta", {
@@ -85,6 +89,9 @@ async function handleMetaRequest(request) {
           if (property === "og:title") metadata.ogTitle = content;
           if (property === "og:description") metadata.ogDescription = content;
           if (property === "og:image") metadata.ogImage = content;
+          if (property === "og:site_name") metadata.ogSiteName = content;
+          if (name === "twitter:card" || property === "twitter:card")
+            metadata.twitterCard = content;
           if (name === "twitter:title") metadata.twitterTitle = content;
           if (name === "twitter:description")
             metadata.twitterDescription = content;
