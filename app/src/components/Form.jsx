@@ -1,3 +1,5 @@
+import { defaultMeta } from "../lib/defaultMeta.js";
+
 export default function Form({
   url,
   username,
@@ -12,8 +14,16 @@ export default function Form({
   setPreview,
 }) {
   const fetchMetadata = async () => {
-    setLoading(true);
     setError(null);
+
+    // No address: show the default preview instead of calling the API
+    if (!url.trim()) {
+      setMeta(defaultMeta);
+      setPreview(true);
+      return;
+    }
+
+    setLoading(true);
     try {
       const response = await fetch(
         "https://meta-checker-api.karlmantle.workers.dev/api/meta",

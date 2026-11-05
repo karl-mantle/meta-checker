@@ -90,6 +90,14 @@ button:hover {
   color: var(--danger);
 }
 
+.form-area,
+.preview-area,
+.audit-area {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
 form {
   display: grid;
   grid-template-columns: 1fr;
@@ -187,10 +195,26 @@ svg {
   form > button {
     grid-column: span 2;
   }
+  /* form on top; preview with the audit to its right */
   main {
+    align-items: start;
     display: grid;
     grid-column: 2;
-    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "form form"
+      "preview audit";
+    /* audit: 30% of the width, kept between 18rem and 24rem */
+    grid-template-columns: minmax(0, 1fr) clamp(18rem, 30%, 24rem);
+  }
+  .form-area {
+    grid-area: form;
+  }
+  .preview-area {
+    grid-area: preview;
+  }
+  .audit-area {
+    align-self: stretch;
+    grid-area: audit;
   }
 }
 

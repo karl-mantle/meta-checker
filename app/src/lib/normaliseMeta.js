@@ -1,4 +1,4 @@
-const decodeHtmlEntities = (str = "") => {
+export const decodeHtmlEntities = (str = "") => {
   if (typeof document === "undefined") return str;
 
   const txt = document.createElement("textarea");

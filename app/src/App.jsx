@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Form from "./components/Form.jsx";
+import Audit from "./components/Audit.jsx";
 import PreviewTabs from "./components/PreviewTabs.jsx";
 
 const defaultPreview = {
@@ -25,29 +26,36 @@ export default function App() {
 
   return (
     <>
-      <Form
-        url={url}
-        username={username}
-        password={password}
-        loading={loading}
-        setUrl={setUrl}
-        setUsername={setUsername}
-        setPassword={setPassword}
-        setMeta={setMeta}
-        setError={setError}
-        setLoading={setLoading}
-        setPreview={setPreview}
-      />
+      <div className="form-area">
+        <Form
+          url={url}
+          username={username}
+          password={password}
+          loading={loading}
+          setUrl={setUrl}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          setMeta={setMeta}
+          setError={setError}
+          setLoading={setLoading}
+          setPreview={setPreview}
+        />
 
-      {error && (
-        <p className="error" role="alert">
-          {error}
-        </p>
-      )}
+        {error && (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        )}
+      </div>
 
       {preview === true && (
         <>
-          <PreviewTabs meta={meta} url={url} />
+          <div className="preview-area">
+            <PreviewTabs meta={meta} url={url} />
+          </div>
+          <div className="audit-area">
+            <Audit meta={meta} />
+          </div>
         </>
       )}
     </>
